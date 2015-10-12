@@ -5,14 +5,15 @@ Reload._onMigrate(function () {
 
 Meteor.startup(function() {
   // Use the script from the webpack dev server
+  var target = Meteor.isCordova ? 'cordova' : 'web';
+
   const scriptEl = document.createElement('script');
   scriptEl.type = 'text/javascript';
-
-  if (Meteor.isCordova) {
-    scriptEl.src = 'http://localhost:3500/assets/cordova.js';
-  } else {
-    scriptEl.src = 'http://localhost:3500/assets/web.js';
-  }
-
+  scriptEl.src = `http://localhost:3500/assets/common.${target}.js`;
   document.head.appendChild(scriptEl);
+
+  const scriptEl2 = document.createElement('script');
+  scriptEl2.type = 'text/javascript';
+  scriptEl2.src = `http://localhost:3500/assets/${target}.js`;
+  document.head.appendChild(scriptEl2);
 });
