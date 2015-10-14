@@ -3,21 +3,15 @@ Reload._onMigrate(function () {
   return [false];
 });
 
-Meteor.startup(function() {
+Meteor.startup(() => {
   // Use the script from the webpack dev server
-  var target = Meteor.isCordova ? 'cordova' : 'web';
-
-  var devServerOrigin = window.location.origin.split(/:[0-9]+$/)[0] + ':3500';
+  const target = Meteor.isCordova ? 'cordova' : 'web';
+  const devServerOrigin = __WebpackDevServerConfig__.protocol + '//' + __WebpackDevServerConfig__.host + ':' + __WebpackDevServerConfig__.port;
 
   const scriptEl = document.createElement('script');
   scriptEl.type = 'text/javascript';
-  scriptEl.src = `${devServerOrigin}/assets/common.${target}.js`;
+  scriptEl.src = `${devServerOrigin}/assets/${target}.js`;
   document.head.appendChild(scriptEl);
-
-  const scriptEl2 = document.createElement('script');
-  scriptEl2.type = 'text/javascript';
-  scriptEl2.src = `${devServerOrigin}/assets/${target}.js`;
-  document.head.appendChild(scriptEl2);
 });
 
 if (Meteor.isCordova) {
