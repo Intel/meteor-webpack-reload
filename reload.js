@@ -13,8 +13,3 @@ Meteor.startup(() => {
   scriptEl.src = `${devServerOrigin}/assets/${target}.js`;
   document.head.appendChild(scriptEl);
 });
-
-if (Meteor.isCordova) {
-  // Allow access to the dev server
-  App.accessRule('*');
-}
