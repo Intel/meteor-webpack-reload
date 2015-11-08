@@ -1,6 +1,6 @@
 Package.describe({
     name: 'webpack:reload',
-    version: '0.1.5',
+    version: '0.2.0',
     summary: 'disable the browser reload for webpack (DO NOT INCLUDE THIS PACKAGE BY YOURSELF)',
     git: 'https://github.com/thereactivestack/meteor-webpack.git',
     documentation: 'README.md',
@@ -14,5 +14,5 @@ Package.onUse(function(api) {
     api.use(['reload', 'ecmascript@0.1.5'], 'client');
     api.addFiles('reload.js', 'client');
 
-    api.use('velocity:core', 'client', { weak: true });
+    api.use('velocity:core@0.10.8', 'client', { weak: true });
 });
