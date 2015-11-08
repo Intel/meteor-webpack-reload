@@ -13,4 +13,6 @@ Package.onUse(function(api) {
     api.imply(['reload'], 'client');
     api.use(['reload', 'ecmascript@0.1.5'], 'client');
     api.addFiles('reload.js', 'client');
+
+    api.use('velocity:core', 'client', { weak: true });
 });
